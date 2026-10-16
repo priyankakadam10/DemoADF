@@ -1,0 +1,15 @@
+{
+	"name": "ADFlearning-Demo-2026",
+	"properties": {
+		"trustModeClaimForMi": {
+			"value": "Disabled",
+			"editable": true
+		}
+	},
+	"location": "centralindia",
+	"identity": {
+		"type": "SystemAssigned",
+		"principalId": "e294d1c0-1eca-4ca1-81f8-c17deea1a0e7",
+		"tenantId": "aa2db100-3a96-4cba-b4f5-f2907dbde22a"
+	}
+}
