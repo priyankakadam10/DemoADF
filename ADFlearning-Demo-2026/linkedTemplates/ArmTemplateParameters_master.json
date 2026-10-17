@@ -20,6 +20,18 @@
 		"Daily_Trigger_properties_pl_file_transfer_parameters_feedName": {
 			"value": "orders"
 		},
+		"Storage_Trigger_properties_pl_file_transfer_parameters_filePattern": {
+			"value": "*.csv"
+		},
+		"Storage_Trigger_properties_pl_file_transfer_parameters_fileExtension": {
+			"value": ".csv"
+		},
+		"Storage_Trigger_properties_pl_file_transfer_parameters_feedName": {
+			"value": "orders"
+		},
+		"Storage_Trigger_properties_typeProperties_scope": {
+			"value": "/subscriptions/a94a1d76-95d3-4473-8066-a57fc0f566cc/resourceGroups/Demo/providers/Microsoft.Storage/storageAccounts/learningdataeng"
+		},
 		"containerUri": {
 			"value": ""
 		},

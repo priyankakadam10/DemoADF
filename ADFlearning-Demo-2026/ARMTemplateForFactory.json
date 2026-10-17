@@ -26,6 +26,22 @@
 		"Daily_Trigger_properties_pl_file_transfer_parameters_feedName": {
 			"type": "string",
 			"defaultValue": "orders"
+		},
+		"Storage_Trigger_properties_pl_file_transfer_parameters_filePattern": {
+			"type": "string",
+			"defaultValue": "*.csv"
+		},
+		"Storage_Trigger_properties_pl_file_transfer_parameters_fileExtension": {
+			"type": "string",
+			"defaultValue": ".csv"
+		},
+		"Storage_Trigger_properties_pl_file_transfer_parameters_feedName": {
+			"type": "string",
+			"defaultValue": "orders"
+		},
+		"Storage_Trigger_properties_typeProperties_scope": {
+			"type": "string",
+			"defaultValue": "/subscriptions/a94a1d76-95d3-4473-8066-a57fc0f566cc/resourceGroups/Demo/providers/Microsoft.Storage/storageAccounts/learningdataeng"
 		}
 	},
 	"variables": {
@@ -382,7 +398,7 @@
 			"properties": {
 				"description": "Trigger Daily at 4:10 AM",
 				"annotations": [],
-				"runtimeState": "Started",
+				"runtimeState": "Stopped",
 				"pipelines": [
 					{
 						"pipelineReference": {
@@ -402,9 +418,43 @@
 						"frequency": "Day",
 						"interval": 1,
 						"startTime": "2026-10-17T04:15:00",
-						"timeZone": "India Standard Time",
-						"schedule": {}
+						"timeZone": "India Standard Time"
 					}
+				}
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/pipelines/pl_file_transfer')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/Storage_Trigger')]",
+			"type": "Microsoft.DataFactory/factories/triggers",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"annotations": [],
+				"runtimeState": "Started",
+				"pipelines": [
+					{
+						"pipelineReference": {
+							"referenceName": "pl_file_transfer",
+							"type": "PipelineReference"
+						},
+						"parameters": {
+							"filePattern": "[parameters('Storage_Trigger_properties_pl_file_transfer_parameters_filePattern')]",
+							"fileExtension": "[parameters('Storage_Trigger_properties_pl_file_transfer_parameters_fileExtension')]",
+							"feedName": "[parameters('Storage_Trigger_properties_pl_file_transfer_parameters_feedName')]"
+						}
+					}
+				],
+				"type": "BlobEventsTrigger",
+				"typeProperties": {
+					"blobPathBeginsWith": "/landing/blobs/",
+					"blobPathEndsWith": ".csv",
+					"ignoreEmptyBlobs": true,
+					"scope": "[parameters('Storage_Trigger_properties_typeProperties_scope')]",
+					"events": [
+						"Microsoft.Storage.BlobCreated"
+					]
 				}
 			},
 			"dependsOn": [

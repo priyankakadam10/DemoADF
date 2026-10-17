@@ -27,6 +27,22 @@
 			"type": "string",
 			"defaultValue": "orders"
 		},
+		"Storage_Trigger_properties_pl_file_transfer_parameters_filePattern": {
+			"type": "string",
+			"defaultValue": "*.csv"
+		},
+		"Storage_Trigger_properties_pl_file_transfer_parameters_fileExtension": {
+			"type": "string",
+			"defaultValue": ".csv"
+		},
+		"Storage_Trigger_properties_pl_file_transfer_parameters_feedName": {
+			"type": "string",
+			"defaultValue": "orders"
+		},
+		"Storage_Trigger_properties_typeProperties_scope": {
+			"type": "string",
+			"defaultValue": "/subscriptions/a94a1d76-95d3-4473-8066-a57fc0f566cc/resourceGroups/Demo/providers/Microsoft.Storage/storageAccounts/learningdataeng"
+		},
 		"containerUri": {
 			"type": "string",
 			"metadata": "URI to storage account containing linked ARM templates"
@@ -68,6 +84,18 @@
 					},
 					"Daily_Trigger_properties_pl_file_transfer_parameters_feedName": {
 						"value": "[parameters('Daily_Trigger_properties_pl_file_transfer_parameters_feedName')]"
+					},
+					"Storage_Trigger_properties_pl_file_transfer_parameters_filePattern": {
+						"value": "[parameters('Storage_Trigger_properties_pl_file_transfer_parameters_filePattern')]"
+					},
+					"Storage_Trigger_properties_pl_file_transfer_parameters_fileExtension": {
+						"value": "[parameters('Storage_Trigger_properties_pl_file_transfer_parameters_fileExtension')]"
+					},
+					"Storage_Trigger_properties_pl_file_transfer_parameters_feedName": {
+						"value": "[parameters('Storage_Trigger_properties_pl_file_transfer_parameters_feedName')]"
+					},
+					"Storage_Trigger_properties_typeProperties_scope": {
+						"value": "[parameters('Storage_Trigger_properties_typeProperties_scope')]"
 					}
 				}
 			},
