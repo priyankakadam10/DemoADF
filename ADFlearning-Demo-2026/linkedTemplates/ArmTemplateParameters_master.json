@@ -1,0 +1,30 @@
+{
+	"$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+	"contentVersion": "1.0.0.0",
+	"parameters": {
+		"factoryName": {
+			"value": "ADFlearning-Demo-2026"
+		},
+		"AzureDataLakeStorage1_accountKey": {
+			"value": ""
+		},
+		"AzureDataLakeStorage1_properties_typeProperties_url": {
+			"value": "https://learningdataeng.dfs.core.windows.net/"
+		},
+		"Daily_Trigger_properties_pl_file_transfer_parameters_filePattern": {
+			"value": "*.csv"
+		},
+		"Daily_Trigger_properties_pl_file_transfer_parameters_fileExtension": {
+			"value": ".csv"
+		},
+		"Daily_Trigger_properties_pl_file_transfer_parameters_feedName": {
+			"value": "orders"
+		},
+		"containerUri": {
+			"value": ""
+		},
+		"containerSasToken": {
+			"value": ""
+		}
+	}
+}
