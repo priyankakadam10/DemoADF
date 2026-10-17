@@ -50,7 +50,7 @@
 						"type": "Expression"
 					},
 					"condition": {
-						"value": "@and(equals(item().type,'File'), endswith(toLower(item().name),'.csv'))",
+						"value": "@and(equals(item().type,'File'), endswith(toLower(item().name), toLower(pipeline().parameters.fileExtension)))",
 						"type": "Expression"
 					}
 				}
@@ -103,7 +103,10 @@
 									"storeSettings": {
 										"type": "AzureBlobFSReadSettings",
 										"recursive": true,
-										"wildcardFileName": "*.csv",
+										"wildcardFileName": {
+											"value": "@pipeline().parameters.filePattern",
+											"type": "Expression"
+										},
 										"deleteFilesAfterCompletion": false
 									},
 									"formatSettings": {
@@ -117,7 +120,8 @@
 										"copyBehavior": "PreserveHierarchy"
 									}
 								},
-								"enableStaging": false
+								"enableStaging": false,
+								"dataIntegrationUnits": 4
 							},
 							"inputs": [
 								{
@@ -131,7 +135,7 @@
 									"type": "DatasetReference",
 									"parameters": {
 										"folderPath": {
-											"value": "@formatDateTime(utcNow(),'yyyy/MM/dd')",
+											"value": "@concat(pipeline().parameters.feedName,'/',formatDateTime(utcNow(),'yyyy/MM/dd'))",
 											"type": "Expression"
 										}
 									}
@@ -163,7 +167,10 @@
 									"storeSettings": {
 										"type": "AzureBlobFSReadSettings",
 										"recursive": true,
-										"wildcardFileName": "*.csv",
+										"wildcardFileName": {
+											"value": "@pipeline().parameters.filePattern",
+											"type": "Expression"
+										},
 										"deleteFilesAfterCompletion": true
 									},
 									"formatSettings": {
@@ -191,7 +198,7 @@
 									"type": "DatasetReference",
 									"parameters": {
 										"folderPath": {
-											"value": "@formatDateTime(utcNow(),'yyyy/MM/dd')",
+											"value": "@concat(pipeline().parameters.feedName,'/',formatDateTime(utcNow(),'yyyy/MM/dd'))",
 											"type": "Expression"
 										}
 									}
@@ -202,6 +209,20 @@
 				}
 			}
 		],
+		"parameters": {
+			"filePattern": {
+				"type": "string",
+				"defaultValue": "*.csv"
+			},
+			"fileExtension": {
+				"type": "string",
+				"defaultValue": ".csv"
+			},
+			"feedName": {
+				"type": "string",
+				"defaultValue": "orders"
+			}
+		},
 		"annotations": [],
 		"lastPublishTime": "2026-10-16T21:25:46Z"
 	},

@@ -1,6 +1,9 @@
 {
 	"name": "ADFlearning-Demo-2026",
 	"properties": {
+		"globalConfigurations": {
+			"PipelineBillingEnabled": "true"
+		},
 		"trustModeClaimForMi": {
 			"value": "Disabled",
 			"editable": true
