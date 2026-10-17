@@ -1,0 +1,30 @@
+{
+	"name": "Storage_Trigger",
+	"properties": {
+		"annotations": [],
+		"runtimeState": "Started",
+		"pipelines": [
+			{
+				"pipelineReference": {
+					"referenceName": "pl_file_transfer",
+					"type": "PipelineReference"
+				},
+				"parameters": {
+					"filePattern": "*.csv",
+					"fileExtension": ".csv",
+					"feedName": "orders"
+				}
+			}
+		],
+		"type": "BlobEventsTrigger",
+		"typeProperties": {
+			"blobPathBeginsWith": "/landing/blobs/",
+			"blobPathEndsWith": ".csv",
+			"ignoreEmptyBlobs": true,
+			"scope": "/subscriptions/a94a1d76-95d3-4473-8066-a57fc0f566cc/resourceGroups/Demo/providers/Microsoft.Storage/storageAccounts/learningdataeng",
+			"events": [
+				"Microsoft.Storage.BlobCreated"
+			]
+		}
+	}
+}
