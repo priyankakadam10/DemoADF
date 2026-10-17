@@ -117,7 +117,9 @@
 										"copyBehavior": "PreserveHierarchy"
 									}
 								},
-								"enableStaging": false
+								"enableStaging": false,
+								"parallelCopies": 1,
+								"dataIntegrationUnits": 4
 							},
 							"inputs": [
 								{
@@ -177,7 +179,9 @@
 										"copyBehavior": "PreserveHierarchy"
 									}
 								},
-								"enableStaging": false
+								"enableStaging": false,
+								"parallelCopies": 1,
+								"dataIntegrationUnits": 4
 							},
 							"inputs": [
 								{
