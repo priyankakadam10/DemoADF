@@ -50,7 +50,7 @@
 						"type": "Expression"
 					},
 					"condition": {
-						"value": "@and(equals(item().type,'File'), endswith(toLower(item().name), toLower(pipeline().parameters.fileExtention)))",
+						"value": "@and(equals(item().type,'File'), endswith(toLower(item().name), toLower(pipeline().parameters.fileExtension)))",
 						"type": "Expression"
 					}
 				}
@@ -103,7 +103,10 @@
 									"storeSettings": {
 										"type": "AzureBlobFSReadSettings",
 										"recursive": true,
-										"wildcardFileName": "*.csv",
+										"wildcardFileName": {
+											"value": "@pipeline().parameters.filePattern",
+											"type": "Expression"
+										},
 										"deleteFilesAfterCompletion": false
 									},
 									"formatSettings": {
@@ -132,7 +135,7 @@
 									"type": "DatasetReference",
 									"parameters": {
 										"folderPath": {
-											"value": "@formatDateTime(utcNow(),'yyyy/MM/dd')",
+											"value": "@concat(pipeline().parameters.feedName,'/',formatDateTime(utcNow(),'yyyy/MM/dd'))",
 											"type": "Expression"
 										}
 									}
@@ -164,7 +167,10 @@
 									"storeSettings": {
 										"type": "AzureBlobFSReadSettings",
 										"recursive": true,
-										"wildcardFileName": "*.csv",
+										"wildcardFileName": {
+											"value": "@pipeline().parameters.filePattern",
+											"type": "Expression"
+										},
 										"deleteFilesAfterCompletion": true
 									},
 									"formatSettings": {
@@ -192,7 +198,7 @@
 									"type": "DatasetReference",
 									"parameters": {
 										"folderPath": {
-											"value": "@formatDateTime(utcNow(),'yyyy/MM/dd')",
+											"value": "@concat(pipeline().parameters.feedName,'/',formatDateTime(utcNow(),'yyyy/MM/dd'))",
 											"type": "Expression"
 										}
 									}
