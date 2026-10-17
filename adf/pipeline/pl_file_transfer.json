@@ -50,7 +50,7 @@
 						"type": "Expression"
 					},
 					"condition": {
-						"value": "@and(equals(item().type,'File'), endswith(toLower(item().name),'.csv'))",
+						"value": "@and(equals(item().type,'File'), endswith(toLower(item().name), toLower(pipeline().parameters.fileExtention)))",
 						"type": "Expression"
 					}
 				}
@@ -178,8 +178,7 @@
 										"copyBehavior": "PreserveHierarchy"
 									}
 								},
-								"enableStaging": false,
-								"dataIntegrationUnits": 4
+								"enableStaging": false
 							},
 							"inputs": [
 								{
@@ -204,6 +203,20 @@
 				}
 			}
 		],
+		"parameters": {
+			"filePattern": {
+				"type": "string",
+				"defaultValue": "*.csv"
+			},
+			"fileExtension": {
+				"type": "string",
+				"defaultValue": ".csv"
+			},
+			"feedName": {
+				"type": "string",
+				"defaultValue": "orders"
+			}
+		},
 		"annotations": [],
 		"lastPublishTime": "2026-10-16T21:25:46Z"
 	},
