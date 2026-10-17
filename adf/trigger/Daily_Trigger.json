@@ -1,9 +1,9 @@
 {
 	"name": "Daily_Trigger",
 	"properties": {
-		"description": "Trigger Daily at 4:05 AM",
+		"description": "Trigger Daily at 4:10 AM",
 		"annotations": [],
-		"runtimeState": "Stopped",
+		"runtimeState": "Started",
 		"pipelines": [
 			{
 				"pipelineReference": {
@@ -22,7 +22,7 @@
 			"recurrence": {
 				"frequency": "Day",
 				"interval": 1,
-				"startTime": "2026-10-17T04:05:00",
+				"startTime": "2026-10-17T04:10:00",
 				"timeZone": "India Standard Time"
 			}
 		}
