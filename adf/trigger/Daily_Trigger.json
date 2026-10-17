@@ -1,0 +1,30 @@
+{
+	"name": "Daily_Trigger",
+	"properties": {
+		"description": "Trigger Daily at 4:05 AM",
+		"annotations": [],
+		"runtimeState": "Stopped",
+		"pipelines": [
+			{
+				"pipelineReference": {
+					"referenceName": "pl_file_transfer",
+					"type": "PipelineReference"
+				},
+				"parameters": {
+					"filePattern": "*.csv",
+					"fileExtension": ".csv",
+					"feedName": "orders"
+				}
+			}
+		],
+		"type": "ScheduleTrigger",
+		"typeProperties": {
+			"recurrence": {
+				"frequency": "Day",
+				"interval": 1,
+				"startTime": "2026-10-17T04:05:00",
+				"timeZone": "India Standard Time"
+			}
+		}
+	}
+}
