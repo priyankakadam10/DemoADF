@@ -380,9 +380,9 @@
 			"type": "Microsoft.DataFactory/factories/triggers",
 			"apiVersion": "2018-06-01",
 			"properties": {
-				"description": "Trigger Daily at 4:05 AM",
+				"description": "Trigger Daily at 4:10 AM",
 				"annotations": [],
-				"runtimeState": "Stopped",
+				"runtimeState": "Started",
 				"pipelines": [
 					{
 						"pipelineReference": {
@@ -401,7 +401,7 @@
 					"recurrence": {
 						"frequency": "Day",
 						"interval": 1,
-						"startTime": "2026-10-17T04:05:00",
+						"startTime": "2026-10-17T04:10:00",
 						"timeZone": "India Standard Time"
 					}
 				}
